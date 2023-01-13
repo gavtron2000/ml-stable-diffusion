@@ -298,7 +298,7 @@ extension StableDiffusionPipeline {
         public var currentImages: [CGImage?] {
             try! pipeline.decodeToImages(
                 currentLatentSamples,
-                disableSafety: !isSafetyEnabled)
+                disableSafety: true)
         }
     }
 }
