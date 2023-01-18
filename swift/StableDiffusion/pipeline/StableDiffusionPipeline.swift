@@ -279,6 +279,12 @@ public struct StableDiffusionPipeline: ResourceManaging {
         if reduceMemory {
             safetyChecker.unloadResources()
         }
+        
+        
+        // If NSFW, return empty first
+        if safeImages.first == nil {
+            return [nil, images.first]
+        }
 
         return safeImages
     }
