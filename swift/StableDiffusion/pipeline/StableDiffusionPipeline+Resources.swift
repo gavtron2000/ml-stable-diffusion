@@ -28,7 +28,7 @@ public extension StableDiffusionPipeline {
             unetChunk1URL = baseURL.appending(path: "UnetChunk1.mlmodelc")
             unetChunk2URL = baseURL.appending(path: "UnetChunk2.mlmodelc")
             decoderURL = baseURL.appending(path: "VAEDecoder.mlmodelc")
-            safetyCheckerURL = path
+            safetyCheckerURL = saftey
             vocabURL = baseURL.appending(path: "vocab.json")
             mergesURL = baseURL.appending(path: "merges.txt")
         }
