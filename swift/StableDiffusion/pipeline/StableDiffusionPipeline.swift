@@ -272,21 +272,22 @@ public struct StableDiffusionPipeline: ResourceManaging {
         }
 
         // Otherwise change images which are not safe to nil
-        let safeImages = try images.map { image in
-            try safetyChecker.isSafe(image) ? image : nil
+        if let image = images.first {
+            if try safetyChecker.isSafe(image) {
+                return images
+            }
+            else {
+                print("NSFW image")
+                return [nil, image]
+            }
+        }
+        else {
+            return images
         }
 
         if reduceMemory {
             safetyChecker.unloadResources()
         }
-        
-        
-        // If NSFW, return empty first
-        if safeImages.first == nil {
-            return [nil, images.first]
-        }
-
-        return safeImages
     }
 
 }
