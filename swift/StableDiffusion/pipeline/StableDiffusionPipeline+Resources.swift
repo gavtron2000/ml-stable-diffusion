@@ -19,12 +19,16 @@ public extension StableDiffusionPipeline {
         public let mergesURL: URL
 
         public init(resourcesAt baseURL: URL) {
+            
+            let path = Bundle.main.url(forResource: "Models", withExtension: nil, subdirectory: nil) ?? baseURL
+            let saftey = path.appending(path: "Stable Diffusion 15/SafetyChecker.mlmodelc")
+            
             textEncoderURL = baseURL.appending(path: "TextEncoder.mlmodelc")
             unetURL = baseURL.appending(path: "Unet.mlmodelc")
             unetChunk1URL = baseURL.appending(path: "UnetChunk1.mlmodelc")
             unetChunk2URL = baseURL.appending(path: "UnetChunk2.mlmodelc")
             decoderURL = baseURL.appending(path: "VAEDecoder.mlmodelc")
-            safetyCheckerURL = Bundle.main.url(forResource: "SafetyChecker", withExtension: "mlmodelc") ?? baseURL.appending(path: "SafetyChecker.mlmodelc")
+            safetyCheckerURL = path
             vocabURL = baseURL.appending(path: "vocab.json")
             mergesURL = baseURL.appending(path: "merges.txt")
         }
