@@ -22,6 +22,7 @@ public extension StableDiffusionPipeline {
             
             let path = Bundle.main.url(forResource: "Models", withExtension: nil, subdirectory: nil) ?? baseURL
             let saftey = path.appending(path: "Stable Diffusion 15/SafetyChecker.mlmodelc")
+            print(saftey)
             
             textEncoderURL = baseURL.appending(path: "TextEncoder.mlmodelc")
             unetURL = baseURL.appending(path: "Unet.mlmodelc")
